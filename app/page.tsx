@@ -11,7 +11,12 @@ export default async function Home() {
 
   return (
     <main className="main-home">
-      <Link href="/dashboard">Dashboard</Link>
+      <p>
+        <Link href="/dashboard">Dashboard</Link>
+      </p>
+      <p>
+        <Link href="/login">Login</Link>
+      </p>
       <pre className="text-[12.25px]">{JSON.stringify(data, null, 3)}</pre>
     </main>
   );
