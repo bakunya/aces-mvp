@@ -8,7 +8,7 @@ const menu_items = [
   { href: "projects", label: "Projects" },
   { href: "personae", label: "Personae" },
   { href: "settings", label: "Settings" },
-  { href: "whoami", label: "Whoami" },
+  // { href: "whoami", label: "Whoami" },
 ];
 
 interface Props {
@@ -41,6 +41,7 @@ export default function Sidebar({ tid, expanded, onExpand, onHover, onOut }: Pro
                 {menu_items.map((item) => (
                   <SidebarItem key={item.href} label={item.label} href={`/${tid}/${item.href}`} />
                 ))}
+                <SidebarItem label="Whoami" href="/whoami" />
               </ul>
             </div>
 
