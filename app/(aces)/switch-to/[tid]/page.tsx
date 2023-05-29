@@ -12,7 +12,6 @@ async function getData(tid: string) {
 
   if (rs.ok) {
     const json = await rs.json();
-    console.log("switch", json);
     return json;
   }
   return null;

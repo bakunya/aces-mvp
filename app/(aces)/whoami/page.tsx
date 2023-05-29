@@ -12,7 +12,6 @@ async function getData() {
 
   if (rs.ok) {
     const json = await rs.json();
-    console.log(json.id);
     return json;
   }
   return null;

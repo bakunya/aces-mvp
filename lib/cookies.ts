@@ -35,14 +35,9 @@ export async function getUserInfo() {
   const data: any = await unsealData(cookie.value, {
     password: process.env.COOKIE_PASSWORD as string
   })
-  console.log("DATA", data);
 
   const user: User = data.user;
+  if (user.ts && user.uid && user.tid) return user;
 
-  // return (user.ts && user.uid && user.tid) ? user : null
-  if (user.ts && user.uid && user.tid) {
-    console.log("USER FROM COOKIE", user);
-    return user;
-  }
   return null;
 }
