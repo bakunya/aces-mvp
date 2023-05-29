@@ -1,8 +1,7 @@
 import { redirect } from "next/navigation";
 import { getUserInfo } from "@/lib/cookies";
 
-// export default async function AcesLayout({ children }: { children: React.ReactNode }) {
-export default async function AcesLayout({ params, children }: Props) {
+export default async function AcesLayout({ children }: LayoutProps) {
   const user = await getUserInfo();
   if (!user) redirect("/login");
 

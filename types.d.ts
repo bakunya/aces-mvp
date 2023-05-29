@@ -1,13 +1,18 @@
-interface Props {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+interface TenantLayoutProps {
   params: { tid: string; };
   children: React.ReactNode;
 }
 
+interface TenantProps {
+  params: { tid: string };
+}
+
 interface WithIdProps {
-  params: {
-    tid: string;
-    id: string;
-  };
+  params: { tid: string; id: string; };
 }
 
 interface User {

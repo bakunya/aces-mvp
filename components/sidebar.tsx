@@ -31,8 +31,7 @@ export default function Sidebar({ tid, expanded, onExpand, onHover, onOut }: Pro
             {/* Sidebar header */}
             <header className="flex flex-shrink-0 items-center sticky top-0 h-14 z-[1] border-b bg-white">
               <div className="px-6 font-medium">
-                <Link href="/">Home</Link>
-                {/* Home */}
+                <Link href={`/${tid}`}>Home</Link>
               </div>
             </header>
 
@@ -40,16 +39,11 @@ export default function Sidebar({ tid, expanded, onExpand, onHover, onOut }: Pro
             <div className="w-full relative pt-2 pb-8 bg-white">
               <ul className="w-full">
                 {menu_items.map((item) => (
-                  <li key={item.href} className="text-[14px] font---medium">
-                    <Link
-                      href={`/${tid}/${item.href}`}
-                      className="flex flex-grow items-center ml-6 h-12">
-                      <div className="">{item.label}</div>
-                    </Link>
-                  </li>
+                  <SidebarItem key={item.href} label={item.label} href={`/${tid}/${item.href}`} />
                 ))}
               </ul>
             </div>
+
             {/* Sidebar footer */}
             <footer className="block w-full flex-shrink-0 sticky bottom-0 mt-auto z-[1] bg-white">
               <button onClick={onExpand} className="w-full h-14">
@@ -73,5 +67,15 @@ export default function Sidebar({ tid, expanded, onExpand, onHover, onOut }: Pro
         </nav>
       </div>
     </aside>
+  );
+}
+
+const SidebarItem = ({ label, href }: { label: string; href: string; }) => {
+  return (
+    <li className="text-[14px] font-medium">
+      <Link href={href} className="flex flex-grow items-center ml-6 h-10">
+        <div className="">{label}</div>
+      </Link>
+    </li>
   );
 }

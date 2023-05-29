@@ -3,15 +3,7 @@ import { getUserInfo } from "@/lib/cookies";
 import Header from "@/components/header";
 import Framer from "@/components/framer";
 
-export default async function TenantLayout({
-  params,
-  children,
-}: {
-  params: {
-    tid: string;
-  }
-  children: React.ReactNode;
-}) {
+export default async function TenantLayout({ params, children }: TenantLayoutProps) {
   const user = await getUserInfo();
   if (params.tid != user?.tid) return notFound();
 
