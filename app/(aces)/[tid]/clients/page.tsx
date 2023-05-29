@@ -1,8 +1,14 @@
+import { getUserInfo } from "@/lib/cookies";
 import { getMany } from "@/lib/fetcher";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function Page({ params }: TenantProps) {
-  const clients = await getMany("client")
+  const user = await getUserInfo();
+  const clients = await getMany("client");
+
+  // This page is only for partner
+  if (user?.type != "partner") notFound();
 
   return (
     <div className="aces-clients">

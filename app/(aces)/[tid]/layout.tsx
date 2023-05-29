@@ -10,7 +10,7 @@ export default async function TenantLayout({ params, children }: TenantLayoutPro
   return (
     <div className="x-tenant">
       <Header />
-      <Framer tid={params.tid}>{children}</Framer>
+      <Framer type={user.type} tid={params.tid}>{children}</Framer>
     </div>
   );
 }

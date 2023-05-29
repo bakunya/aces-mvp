@@ -7,9 +7,9 @@ export default async function TenantLayout({ children }: LayoutProps) {
   if (!user) return null;
 
   return (
-    <div className="x-tenant">
+    <div className="x-whoami">
       <Header />
-      <Framer tid={user.tid}>{children}</Framer>
+      <Framer type={user.type} tid={user.tid}>{children}</Framer>
     </div>
   );
 }

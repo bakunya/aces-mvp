@@ -1,17 +1,29 @@
 import Link from "next/link";
 
-const menu_items = [
-  { href: "add-project", label: "New Project" },
-  { href: "invite", label: "Invite Members" },
-  { href: "users", label: "Users" },
-  { href: "clients", label: "Clients" },
-  { href: "projects", label: "Projects" },
-  { href: "personae", label: "Personae" },
-  { href: "settings", label: "Settings" },
-  // { href: "whoami", label: "Whoami" },
-];
+const menuItems = (type: string) => {
+  if (type == "partner") return [
+    { href: "new-project", label: "New Project" },
+    { href: "invite", label: "Invite Members" },
+    { href: "users", label: "Users" },
+    { href: "clients", label: "Clients" },
+    { href: "projects", label: "Projects" },
+    { href: "personae", label: "Personae" },
+    { href: "settings", label: "Settings" },
+  ];
+
+  return [
+    { href: "new-project", label: "New Project" },
+    { href: "invite", label: "Invite Members" },
+    { href: "users", label: "Users" },
+    // { href: "clients", label: "Clients" },
+    { href: "projects", label: "Projects" },
+    { href: "personae", label: "Personae" },
+    { href: "settings", label: "Settings" },
+  ];
+}
 
 interface Props {
+  type: string;
   tid: string;
   expanded: boolean;
   onExpand: () => void;
@@ -19,7 +31,9 @@ interface Props {
   onOut: () => void;
 }
 
-export default function Sidebar({ tid, expanded, onExpand, onHover, onOut }: Props) {
+export default function Sidebar({ type, tid, expanded, onExpand, onHover, onOut }: Props) {
+  const items = menuItems(type);
+
   return (
     <aside
       className={`bg-white fixed z-[1199] overflow-x-auto top-16 bottom-0 border-r ${expanded ? "w-48" : "w-14"}`}
@@ -38,10 +52,11 @@ export default function Sidebar({ tid, expanded, onExpand, onHover, onOut }: Pro
             {/* Sidebar main */}
             <div className="w-full relative pt-2 pb-8 bg-white">
               <ul className="w-full">
-                {menu_items.map((item) => (
+                {items.map((item) => (
                   <SidebarItem key={item.href} label={item.label} href={`/${tid}/${item.href}`} />
                 ))}
                 <SidebarItem label="Whoami" href="/whoami" />
+                <SidebarItem label="Switch Account" href="/switch-account" />
               </ul>
             </div>
 
