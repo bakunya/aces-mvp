@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { getUserInfo } from "@/lib/cookies";
+import Header from "@/components/header";
+import Framer from "@/components/framer";
 
-export default async function TIDLayout({
+export default async function TenantLayout({
   params,
   children,
 }: {
@@ -15,8 +17,8 @@ export default async function TIDLayout({
 
   return (
     <div className="x-tenant">
-      {/*  */}
-      {children}
+      <Header />
+      <Framer tid={params.tid}>{children}</Framer>
     </div>
   );
 }

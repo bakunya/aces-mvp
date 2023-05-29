@@ -1,24 +1,25 @@
 import Link from "next/link";
 
 const menu_items = [
-  { href: "/add-project", label: "New Project" },
-  { href: "/invite", label: "Invite Members" },
-  { href: "/users", label: "Users" },
-  { href: "/clients", label: "Clients" },
-  { href: "/projects", label: "Projects" },
-  { href: "/personae", label: "Personae" },
-  { href: "/settings", label: "Settings" },
-  { href: "/whoami", label: "Whoami" },
+  { href: "add-project", label: "New Project" },
+  { href: "invite", label: "Invite Members" },
+  { href: "users", label: "Users" },
+  { href: "clients", label: "Clients" },
+  { href: "projects", label: "Projects" },
+  { href: "personae", label: "Personae" },
+  { href: "settings", label: "Settings" },
+  { href: "whoami", label: "Whoami" },
 ];
 
 interface Props {
+  tid: string;
   expanded: boolean;
   onExpand: () => void;
   onHover: () => void;
   onOut: () => void;
 }
 
-export default function Sidebar({ expanded, onExpand, onHover, onOut }: Props) {
+export default function Sidebar({ tid, expanded, onExpand, onHover, onOut }: Props) {
   return (
     <aside
       className={`bg-white fixed z-[1199] overflow-x-auto top-16 bottom-0 border-r ${expanded ? "w-48" : "w-14"}`}
@@ -41,7 +42,7 @@ export default function Sidebar({ expanded, onExpand, onHover, onOut }: Props) {
                 {menu_items.map((item) => (
                   <li key={item.href} className="text-[14px] font---medium">
                     <Link
-                      href={item.href == "/ui" ? "/ui" : item.href}
+                      href={`/${tid}/${item.href}`}
                       className="flex flex-grow items-center ml-6 h-12">
                       <div className="">{item.label}</div>
                     </Link>

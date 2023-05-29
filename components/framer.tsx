@@ -5,10 +5,11 @@ import Sidebar from "./sidebar";
 import Footer from "./footer";
 
 interface Props {
+  tid: string;
   children: React.ReactNode;
 }
 
-export default function Framer({ children }: Props) {
+export default function Framer({ tid, children }: Props) {
   const [expandState, setExpandState] = useState(true);
   const [expanded, setExpanded] = useState(true);
 
@@ -36,7 +37,14 @@ export default function Framer({ children }: Props) {
 
   return (
     <div id="framer" className="mt-16 expanded">
-      <Sidebar expanded={expanded} onExpand={asideBtnClick} onHover={asideHover} onOut={asideOut} />
+      <Sidebar
+        //
+        tid={tid}
+        expanded={expanded}
+        onExpand={asideBtnClick}
+        onHover={asideHover}
+        onOut={asideOut}
+      />
       {/* <div id="container" className={`flex flex-col ${expandState ? "ml-48" : "ml-14"}`} style={{ minHeight: "calc(-64px + 100vh)" }}> */}
       <div
         id="container"
