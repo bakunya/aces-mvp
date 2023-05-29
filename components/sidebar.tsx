@@ -56,7 +56,6 @@ export default function Sidebar({ type, tid, expanded, onExpand, onHover, onOut 
                   <SidebarItem key={item.href} label={item.label} href={`/${tid}/${item.href}`} />
                 ))}
                 <SidebarItem label="Whoami" href="/whoami" />
-                <SidebarItem label="Switch Account" href="/switch-account" />
               </ul>
             </div>
 
