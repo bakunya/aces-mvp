@@ -1,5 +1,6 @@
 interface Props {
   params: { tid: string; };
+  children: React.ReactNode;
 }
 
 interface WithIdProps {
