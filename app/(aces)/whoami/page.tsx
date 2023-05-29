@@ -31,7 +31,7 @@ export default async function Page() {
       <h2 className="text-xl text-slate-700 font-bold mb-6">Switch Account:</h2>
       <div className="flex flex-row gap-3 my-4">
         {otherAccounts.map((acc: any) => (
-          <Link href={`/switch-to/${acc.tid}`} className="border border-slate-400 px-4 py-2 text-sm">
+          <Link key={acc.tid} href={`/switch-to/${acc.tid}`} className="border border-slate-400 px-4 py-2 text-sm">
             {acc.org_name}
           </Link>
         ))}
