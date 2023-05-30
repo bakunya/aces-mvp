@@ -9,7 +9,7 @@ export default async function Page({ params }: TenantProps) {
       <h1 className="text-2xl text-slate-700 font-bold mb-6">Projects</h1>
       {projects.map((project: any) => (
         <p className="mb-1" key={project.id}>
-          <Link href={`/${params.tid}/projects/${project.id}`}>
+          <Link href={`/${params.tid}/projects/${project.id}/settings`}>
             {project.title}
           </Link>
         </p>

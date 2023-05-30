@@ -15,6 +15,10 @@ interface WithIdProps {
   params: { tid: string; id: string; };
 }
 
+interface WithIdLayoutProps extends WithIdProps {
+  children: React.ReactNode;
+}
+
 interface User {
   ts: number;
   uid: string;
