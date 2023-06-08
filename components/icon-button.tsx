@@ -32,7 +32,7 @@ type ButtonHTMLProps = {
   };
   
 
-const IconButton = ({ buttonProps, overrideClassName }: { overrideClassName?: boolean, buttonProps?: ButtonHTMLProps }) => {
+const IconButton = ({ buttonProps, overrideClassName, Icon, iconProps }: { iconProps?: Object, Icon?:  React.ForwardRefExoticComponent<Omit<React.SVGProps<SVGSVGElement>, "ref">>, overrideClassName?: boolean, buttonProps?: ButtonHTMLProps }) => {
 	return (
 		<button
 			{ ...{ 
@@ -48,7 +48,7 @@ const IconButton = ({ buttonProps, overrideClassName }: { overrideClassName?: bo
 			} }
 		>
 			<span className="sr-only"> Download </span>
-			<PencilSquareIcon className="h-5 w-5" />
+			{Icon ? <Icon className='h-5 w-5' { ...iconProps } /> : <PencilSquareIcon className="h-5 w-5" { ...iconProps } />}
 		</button>
 	)
 }
