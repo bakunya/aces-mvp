@@ -17,8 +17,9 @@
 } */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
+	/* min-width: 1280px; */
+  	color: rgb(var(--foreground-rgb));
+  	/* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
