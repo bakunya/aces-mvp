@@ -20,7 +20,7 @@ export default async function Page({ params }: TenantProps) {
 				</thead>
 				<tbody>
 					{ projects.map((v: Project, i: number) => (
-						<tr>
+						<tr key={i}>
 							<td className="p-3 text-left capitalize">{ i + 1 }</td>
 							<td className="p-3 text-left capitalize">
 								<Link href={ `/${params.tid}/projects/${v.id}/settings` } className="border-b border-black">

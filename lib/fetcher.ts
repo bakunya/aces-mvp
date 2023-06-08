@@ -12,6 +12,7 @@ export async function getMany(type: string) {
 	// Check type
 	if (!types[type]) throw Error("Invalid type");
 
+	// @ts-ignore
 	const url = apiURL(types[type]);
 	const headers = getCookieHeaders();
 	const rs = await fetch(url, headers);

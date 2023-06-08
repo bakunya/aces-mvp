@@ -28,7 +28,7 @@ export default async function Page({ params }: TenantProps) {
 				</thead>
 				<tbody>
 					{ users.map((v: User, i: number) => (
-						<tr>
+						<tr key={i}>
 							<td className="p-3 text-left capitalize">{ i + 1 }</td>
 							<td className="p-3 text-left capitalize">
 								{ match(v.uid === currUser?.uid)
