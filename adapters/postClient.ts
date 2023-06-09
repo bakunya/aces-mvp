@@ -13,7 +13,7 @@ export default async function postClient(data: any, cb?: { onSuccess?: Function,
 	}
 
 	try {
-		const rs = await api.hit("/Api/v1/fetch");
+		const rs = await api.hit("/api/v1/fetch");
 	 	if(cb?.onSuccess instanceof Function) cb?.onSuccess(rs);
 	} catch (error) {
 		if(cb?.onError instanceof Function) cb?.onError(error);
