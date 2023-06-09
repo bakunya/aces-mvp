@@ -1,4 +1,4 @@
-import Api from "./api";
+import Api from "./Api";
 
 export default async function postProject(data: any, cb?: { onSuccess?: Function, onError?: Function}) {
 	const api = new Api();

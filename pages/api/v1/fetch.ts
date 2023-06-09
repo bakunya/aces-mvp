@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import Api from '@/adapters/api';
+import Api from '@/adapters/Api';
 import { apiURL } from '@/lib/utils';
 import { sessionOptions } from '@/lib/session';
 import type { NextApiRequest, NextApiResponse } from 'next'
