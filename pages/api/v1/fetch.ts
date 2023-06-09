@@ -24,9 +24,9 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     
     try {
         const data = await api.hit(apiURL((req.headers['x-url-forward'] ?? '') as string), null)
-        return res.status(getSuccessResponseCode(req?.method ?? 'GET')).json(data)
+        return res.status(getSuccessResponseCode(req?.method?.toUpperCase() ?? 'GET')).json(req?.method?.toUpperCase() === 'GET' ? data : { status: 'success' })
     } catch (er: any) {
-		console.log(er)
+		console.log(er, er.stack)
         return res.status(500).json({ 
             status: 'error', 
             message: er.message,

@@ -1,11 +1,17 @@
 "use client"
 import React from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import TextField from '@/components/text-field'
+import postClient from '@/adapters/postClient'
+import { errorToast, successToast } from '@/lib/runToast'
+import { useRouter } from 'next/navigation'
 
 const FormCreate = () => {
+	const [l, sl] = React.useState(false)
+	const r = useRouter()
+
 	const validationSchema = z.object({
 		org_name: z.string().min(3).max(50).trim(),
 		short_name: z.string().max(20).trim(),
@@ -21,7 +27,21 @@ const FormCreate = () => {
 	})
 
 	const onSubmit = handleSubmit(data => {
-		console.log(data)
+		sl(true)
+
+		data = {
+			...data,
+			npwp: { no: 0 },
+			org_info: { email: "@mail.com" }
+		} as any
+
+		postClient(data, {
+			onError: errorToast,
+			onSuccess: () => {
+				r.refresh()
+				successToast('Client created successfully!')
+			}
+		}).finally(() => sl(false))
 	})
 
 	return (
@@ -34,14 +54,14 @@ const FormCreate = () => {
 								Organization <span className="text-red-600">*</span>
 							</label>
 							<div className="mt-2">
-								<TextField 
+								<TextField
 									control={ control }
-									error={errors.org_name?.message}
-									inputProps={{
+									error={ errors.org_name?.message }
+									inputProps={ {
 										autoComplete: "org_name",
 										placeholder: "PT Sanur Indah Pertama",
 										name: "org_name",
-									}}
+									} }
 								/>
 							</div>
 						</div>
@@ -50,14 +70,14 @@ const FormCreate = () => {
 								Short name
 							</label>
 							<div className="mt-2">
-								<TextField 
+								<TextField
 									control={ control }
-									error={errors.short_name?.message}
-									inputProps={{
+									error={ errors.short_name?.message }
+									inputProps={ {
 										autoComplete: "short_name",
 										placeholder: "PT Sanurs",
 										name: "short_name",
-									}}
+									} }
 								/>
 							</div>
 						</div>
@@ -70,6 +90,7 @@ const FormCreate = () => {
 					Cancel
 				</button>
 				<button
+					disabled={ l }
 					type="submit"
 					className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
 				>

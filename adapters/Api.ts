@@ -38,9 +38,9 @@ export default class Api {
 
     setBody() {
 		match(this.body)
-			.with(P.instanceOf(FormData), () => this.body = this.body as FormData)
-			.with(P.instanceOf(Object), () => this.body = JSON.stringify(this.body))
-			.with(P.string, () => this.body = this.body)
-			.otherwise(() => this.body = JSON.stringify(this.body))
+			.with(P.instanceOf(FormData), () => (this.body = this.body as FormData))
+			.with(P.instanceOf(Object), () => (this.body = JSON.stringify(this.body)))
+			.with(P.string, () => (this.body = this.body))
+			.otherwise(() => (this.body = JSON.stringify(this.body)))
     }
 }
