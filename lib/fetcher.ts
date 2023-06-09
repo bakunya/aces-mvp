@@ -1,7 +1,7 @@
 import { getCookieHeaders } from "./cookies";
 import { apiURL } from "./utils";
 
-const types: Record<string, string> = {
+export const types: Record<string, string> = {
 	client: 'clients',
 	persona: 'personae',
 	project: 'projects',

@@ -1,0 +1,1 @@
+export const project = (id?: string) => `/projects/${id ?? ''}`
