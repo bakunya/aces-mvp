@@ -1,5 +1,5 @@
 import { BaseFrame } from "@/components/frames";
-import { getMany, getSingle } from "@/lib/fetcher";
+import { getSingle } from "@/lib/fetcher";
 import ModalUpdateProject from "./components/modal-upate-project";
 import Link from "next/link";
 import { PlusIcon } from "@heroicons/react/20/solid";
@@ -46,6 +46,22 @@ export default async function Page({ params }: WithIdProps) {
 											name: "description",
 											placeholder: "This project ...",
 											type: "textarea"
+										}}
+									/>
+								</td>
+							</tr><tr className="odd:bg-gray-50">
+								<td className="whitespace-nowrap w-2/5 px-5 py-4 font-medium text-gray-900">
+									<strong>Slug</strong>
+								</td>
+								<td className="whitespace-nowrap px-5 py-3 text-gray-700">
+									{ project.slug }
+									<ModalUpdateProject 
+										title="Update Slug" 
+										dataToUpdate={{ slug: project.slug }} 
+										inputProps={{
+											autoComplete: "slug",
+											name: "slug",
+											placeholder: "This project ...",
 										}}
 									/>
 								</td>
