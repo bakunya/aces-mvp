@@ -37,7 +37,7 @@ export async function getUserInfo() {
   })
 
   const user: User = data.user;
-  if (user.ts && user.uid && user.tid) return user;
+  if (user?.ts && user?.uid && user?.tid) return user;
 
   return null;
 }

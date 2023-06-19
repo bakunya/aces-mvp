@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="footer block px-5 py-8 border-t">
+    <footer className="container mx-auto footer block px-5 py-8 border-t">
       <div className="flex flex-wrap max-w-5xl mx-auto">
         <div className="">
           Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for
